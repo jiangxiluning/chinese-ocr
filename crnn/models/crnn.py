@@ -1,5 +1,5 @@
 import torch.nn as nn
-import utils
+from . import utils
 
 
 class BidirectionalLSTM(nn.Module):

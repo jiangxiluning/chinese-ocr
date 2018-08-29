@@ -12,6 +12,7 @@
 sh setup.sh
 ##CPU环境
 sh setup-cpu.sh
+如需使用python3.6 git checkout chinese-ocr-python-3.6
 ```
 
 # 模型训练

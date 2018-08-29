@@ -1,6 +1,6 @@
 import numpy as np
-from other import clip_boxes
-from text_proposal_graph_builder import TextProposalGraphBuilder
+#from  ctpn.ctpn.other import clip_boxes
+from .text_proposal_graph_builder import TextProposalGraphBuilder
 
 class TextProposalConnector:
     """

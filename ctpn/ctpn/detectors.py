@@ -1,13 +1,12 @@
 #coding:utf-8
-from cfg import Config as cfg
-from other import prepare_img, normalize
+from ctpn.ctpn.cfg import Config as cfg
+from ctpn.ctpn.other import  normalize
 import numpy as np
-import sys
-sys.path.append('..')
+#import sys
 from lib.fast_rcnn.nms_wrapper import nms
 #from lib.fast_rcnn.test import  test_ctpn
 
-from text_proposal_connector import TextProposalConnector
+from ctpn.ctpn.text_proposal_connector import TextProposalConnector
 
 
 

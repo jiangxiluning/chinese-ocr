@@ -9,7 +9,7 @@ from keras.optimizers import SGD
 import numpy as np
 #from PIL import Image
 import keras.backend  as K
-import keys
+from . import keys
 import os
 #from keras.models import load_model
 
@@ -72,7 +72,7 @@ if os.path.exists(modelPath):
     model,basemodel = get_model(height,nclass+1)
     basemodel.load_weights(modelPath)
     
-
+    
 def predict(im):
     """
     
@@ -82,7 +82,8 @@ def predict(im):
     w = im.size[0] / scale
     w = int(w)
     im = im.resize((w,32))
-    img = np.array(im).astype(np.float32)/255.0
+    img = np.array(im)
+    img = img.astype(np.float32)/255.0
     X  = img.reshape((32,w,1))
     X = np.array([X])
     y_pred = basemodel.predict(X)

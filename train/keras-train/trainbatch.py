@@ -43,11 +43,11 @@ for i in range(3):
                    X,Y = [X, Y, np.ones(batch)*Length, np.ones(batch)*n_len], np.ones(batch) 
                    
                    crrentLoss = model.evaluate(X,Y)
-                   print "step:{},loss:{},crrentLoss:{}".format(j,loss,crrentLoss)
+                   print("step:{},loss:{},crrentLoss:{}".format(j,loss,crrentLoss))
                    if crrentLoss<loss:
                         loss = crrentLoss
                         path = 'save_model/model{}.h5'.format(loss)
-                        print "save model:".format(path)
+                        print("save model:".format(path))
                         basemodel.save(path)
 
                 j+=1

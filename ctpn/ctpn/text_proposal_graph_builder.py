@@ -1,6 +1,6 @@
-from cfg import Config as cfg
+from .cfg import Config as cfg
 import numpy as np
-from other import Graph
+from .other import Graph
 
 
 class TextProposalGraphBuilder:

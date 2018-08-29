@@ -15,9 +15,8 @@ def prepare_img(im, mean):
 def draw_boxes(im, bboxes, is_display=True, color=None, caption="Image", wait=True):
     """
         boxes: bounding boxes
-    """
+	"""
     text_recs=np.zeros((len(bboxes), 8), np.int)
-
     im=im.copy()
     index = 0
     for box in bboxes:
@@ -42,11 +41,11 @@ def draw_boxes(im, bboxes, is_display=True, color=None, caption="Image", wait=Tr
         
         disX = x2 - x1
         disY = y2 - y1
-	width = np.sqrt(disX*disX + disY*disY)
-	fTmp0 = y3 - y1
-	fTmp1 = fTmp0 * disY / width
-	x = np.fabs(fTmp1*disX / width)
-	y = np.fabs(fTmp1*disY / width)
+        width = np.sqrt(disX*disX + disY*disY)
+        fTmp0 = y3 - y1
+        fTmp1 = fTmp0 * disY / width
+        x = np.fabs(fTmp1*disX / width)
+        y = np.fabs(fTmp1*disY / width)
         if box[5] < 0:
            x1 -= x
            y1 += y
@@ -110,7 +109,7 @@ class Graph:
 
     def sub_graphs_connected(self):
         sub_graphs=[]
-        for index in xrange(self.graph.shape[0]):
+        for index in range(self.graph.shape[0]):
             if not self.graph[:, index].any() and self.graph[index, :].any():
                 v=index
                 sub_graphs.append([v])

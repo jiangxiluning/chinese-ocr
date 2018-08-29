@@ -1,13 +1,10 @@
 
 import tensorflow as tf
-import sys
-import os
-from cfg import Config
-from other import resize_im
-sys.path.append('ctpn')
-from lib.networks.factory import get_network
-from lib.fast_rcnn.config import cfg
-from lib.fast_rcnn.test import  test_ctpn
+from  ctpn.ctpn.cfg import Config
+from ctpn.ctpn.other import resize_im
+from ctpn.lib.networks.factory import get_network
+from ctpn.lib.fast_rcnn.config import cfg
+from ctpn.lib.fast_rcnn.test import  test_ctpn
 
 def load_tf_model():
     cfg.TEST.HAS_RPN = True  # Use RPN for proposals

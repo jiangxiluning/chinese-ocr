@@ -1,8 +1,12 @@
 #coding:utf-8
 ##添加文本方向 检测模型，自动检测文字方向，0、90、180、270
+import sys
+sys.path.append('ctpn')
+
 from ctpn.text_detect import text_detect
+
 from ocr.model import predict as ocr
-from angle.predict import predict as angle_detect##文字方向检测
+from angle.predict import predict as angle_detect   ##文字方向检测
 from crnn.crnn import crnnOcr
 from math import *
 import numpy as np
