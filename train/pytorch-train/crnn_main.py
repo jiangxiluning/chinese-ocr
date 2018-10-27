@@ -96,7 +96,21 @@ def weights_init(m):
         m.weight.data.normal_(1.0, 0.02)
         m.bias.data.fill_(0)
 
+
+if torch.cuda.is_available() and opt.cuda:
+    device = torch.device('cuda')
+    print('Using cuda...')
+else:
+    device = torch.device('cpu')
+    print('Using cpu...')
+
 crnn = crnn.CRNN(opt.imgH, nc, nclass, nh, ngpu)
+
+if opt.ngpu > 1:
+    crnn = torch.nn.DataParallel(crnn, range(opt.ngpu))
+
+crnn = crnn.to(device)
+
 crnn.apply(weights_init)
 if opt.crnn != '':
     print('loading pretrained model from %s' % opt.crnn)
@@ -107,14 +121,8 @@ image = torch.FloatTensor(opt.batchSize, 3, opt.imgH, opt.imgH)
 text = torch.IntTensor(opt.batchSize * 5)
 length = torch.IntTensor(opt.batchSize)
 
-if opt.cuda:
-    crnn.cuda()
-    image = image.cuda()
-    criterion = criterion.cuda()
-
-image = Variable(image)
-text = Variable(text)
-length = Variable(length)
+image = image.to(device)
+criterion = criterion.to(device)
 
 # loss averager
 loss_avg = utils.averager()
@@ -230,10 +238,7 @@ def delete(path):
     paths = glob.glob(path+'/*.pth')
     for p in paths:
         os.remove(p)
-    
-    
-    
-    
+
 numLoss = 0##判断训练参数是否下降    
     
 for epoch in range(opt.niter):
